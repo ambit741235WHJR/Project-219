@@ -11,6 +11,14 @@ myVideo.muted = true;
 
 let myStream;
 
+navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: true,
+}).then((stream) => {
+    myStream = stream;
+    addVideoStream(myVideo, stream);
+});
+
 function addVideoStream(video, stream) {
     video.srcObject = stream;
     video.addEventListener("loadedmetadata", () => {
